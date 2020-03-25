@@ -1,8 +1,10 @@
 import React from "react";
 import platform from "../platform";
-import ListHeaderMemoed from "./ListHeaderMemoed";
-import ListSubheaderUnmemoed from "./ListSubheaderUnmemoed";
+import ListHeader from "./ListHeader";
+import ListSubheader from "./ListSubheader";
 import AnimalsList from "./AnimalsList";
+
+const style_presentSelfNested = { marginLeft: "20px" };
 
 const TheComp = React.memo(props => {
   // Get props from StoreWrap.
@@ -10,10 +12,10 @@ const TheComp = React.memo(props => {
     handleCompMounted_();
   }, []);
   return (
-    <div>
-      -= FelinesList | (Time: {Date.now()}) =-
-      <ListHeaderMemoed />
-      <ListSubheaderUnmemoed />
+    <div style={{ ...style_presentSelfNested }}>
+      -= FelinesList (w/ Store -|- Memoed -|- Time: {Date.now()}) =-
+      <ListHeader />
+      <ListSubheader />
       <AnimalsList list={props.list} />
     </div>
   );

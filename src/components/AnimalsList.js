@@ -1,6 +1,8 @@
 import React from "react";
 import AnimalsListItem from "./AnimalsListItem";
 
+const style_presentSelfNested = { marginLeft: "20px" };
+
 const TheComp = React.memo(props => {
   const listItems = !props.list
     ? []
@@ -12,8 +14,8 @@ const TheComp = React.memo(props => {
     listStyleType: "none"
   };
   return (
-    <div>
-      -= AnimalList | (Time: {Date.now()}) =-
+    <div style={{ ...style_presentSelfNested }}>
+      -= AnimalList (Memoed -|- Time: {Date.now()}) =-
       <ul style={{ ...style_ul }}>{listItems}</ul>
     </div>
   );

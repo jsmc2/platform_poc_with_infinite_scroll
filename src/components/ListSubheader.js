@@ -5,7 +5,7 @@ const style_presentSelfNested = { marginLeft: "20px" };
 const TheComp = props => {
   return (
     <div style={{ ...style_presentSelfNested }}>
-      -= Masthead (Time: {Date.now()}) =-
+      -= ListSubheader (Time: {Date.now()}) =-
     </div>
   );
 };
