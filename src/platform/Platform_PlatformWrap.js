@@ -15,7 +15,6 @@ function Platform({ children }) {
     }, 500);
 
     platform.store.setCommitHandler(store => {
-      console.log(">>> @commitHandler | store: ", store);
       const newStore = { ...store };
       setStoreState(newStore);
     });

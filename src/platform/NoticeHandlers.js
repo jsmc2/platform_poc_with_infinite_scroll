@@ -1,15 +1,3 @@
-export function TheAppMounted(notice, store) {
-  console.log("|-----");
-  console.log(">>> Running handler for ApplicationMounted");
-  console.log(">>> Notice is: ", notice);
-  console.log(">>> storeIs: ", store.readVal(""));
-}
-// Helper FelinesPageScrolledToBottom, FelinesListMounted.
-async function fetchFelines_(url) {
-  const response = await fetch(url);
-  const data = await response.json();
-  return data;
-}
 export async function FelinesListMounted(notice, store) {
   // Fetch first set of cat listings.
   const url =
@@ -37,23 +25,9 @@ export async function FelinesPageScrolledToBottom(notice, store) {
     store.commitWrites();
   }
 }
-export function ListingsScrolledToFold(notice, store) {
-  console.log("|-----");
-  console.log(">>> Running handler for ListingsScrolledToFold");
-  console.log(">>> Notice is: ", notice);
-  console.log(">>> storeIs: ", store.readVal(""));
-}
-export function IncrementAgeButtonClicked(notice, store) {
-  const id = notice.id;
-  let age = store.readData(`persons.${id}.age`);
-  age += 1;
-  store.startWrites();
-  store.writeData(age, `persons.${id}.age`);
-  store.commitWrites();
-}
-export function SomethingElseHappened(notice, store) {
-  console.log("|-----");
-  console.log(">>> Running handler for SomethingElseHappened");
-  console.log(">>> Notice is: ", notice);
-  console.log(">>> storeIs: ", store.readVal(""));
+// Helper FelinesPageScrolledToBottom, FelinesListMounted.
+async function fetchFelines_(url) {
+  const response = await fetch(url);
+  const data = await response.json();
+  return data;
 }

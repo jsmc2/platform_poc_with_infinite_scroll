@@ -4,14 +4,8 @@ import FelinesList from "./FelinesList";
 
 const runManageScrollToBottom = platform.tools.runManageScrollToBottom;
 
-console.log(">>> >>> platform 1: ", platform);
-console.log(">>> >>> StoreWrap 1: ", platform);
-
 function TheComp(props) {
-  console.log(">>> >>> platform 2: ", platform);
-  console.log(">>> >>> StoreWrap 2: ", platform);
   React.useEffect(() => {
-    console.log(">>> @FelinesPage - mounted");
     runManageScrollToBottom(handleScrolledToBottom);
   }, []);
   let loadingMsg = "";

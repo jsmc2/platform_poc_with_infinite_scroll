@@ -1,10 +1,9 @@
 import { Tools } from "../tools";
-import platform from "./Platform_";
+import platform from "./Platform";
 import * as noticeHandlers from "./NoticeHandlers";
 let __initaizedPlatform = false;
 
 if (__initaizedPlatform === false) {
-  console.log(">>> TOOOOOOLS: ", Tools);
   const initialStoreData = bgetInitialStoreData_();
 
   __initaizedPlatform = platform.initPlatform(
@@ -13,8 +12,6 @@ if (__initaizedPlatform === false) {
     Tools
   );
 }
-
-console.log(">>> platformm : ", platform);
 
 export default __initaizedPlatform;
 

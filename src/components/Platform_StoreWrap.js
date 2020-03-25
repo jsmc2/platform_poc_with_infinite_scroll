@@ -15,7 +15,6 @@ const TheComp = React.memo(_props => {
   }
   delete props.Comp;
   delete props.propsMapping;
-  console.log(">>> @Platform_StoreWrap | props: ", props);
   return <Comp {...resolvedPropsMapping} {...props} />;
 });
 

@@ -6,9 +6,7 @@ import AnimalsList from "./AnimalsList";
 
 const TheComp = React.memo(props => {
   // Get props from StoreWrap.
-  console.log(">>> @FelinesList | props: ", props);
   React.useEffect(() => {
-    console.log(">>> @FelinesList - mounted");
     handleCompMounted_();
   }, []);
   return (

@@ -11,7 +11,6 @@ const TheComp = React.memo(props => {
   const style_ul = {
     listStyleType: "none"
   };
-  console.log(listItems);
   return (
     <div>
       -= AnimalList | (Time: {Date.now()}) =-

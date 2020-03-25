@@ -7,7 +7,6 @@ function Platform({ children }) {
   const [storeState, setStoreState] = React.useState(platform.store);
   React.useEffect(() => {
     // Temp: Follow sTo removes fetch error mask screen due to problem at codesandbox.
-    ///document.getElementById("root").nextSibling.style.display = "none";
     setTimeout(() => {
       if (document.getElementsByTagName("iframe")[0]) {
         document.getElementsByTagName("iframe")[0].style.display = "none";
@@ -15,7 +14,6 @@ function Platform({ children }) {
     }, 500);
 
     platform.store.setCommitHandler(store => {
-      console.log(">>> @commitHandler | store: ", store);
       const newStore = { ...store };
       setStoreState(newStore);
     });
