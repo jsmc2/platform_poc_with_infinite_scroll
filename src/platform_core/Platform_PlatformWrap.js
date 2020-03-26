@@ -1,23 +1,12 @@
 import React from "react";
-import platform from "./";
+///import platform from "../appPlatform";
 import { StoreChangedContext } from "./Platform_Contexts";
 
 //::DEFAULT::::::::::-::::::::::-::::::::::-::::::::::-::::::::::
-export default withPlatformWrap;
-function withPlatformWrap(WrappedComp) {
-  return props => {
-    return (
-      <PlatformWrap>
-        <WrappedComp />
-      </PlatformWrap>
-    );
-  };
-}
-
-// HOISTED COMPONENT WRAPPER FOR HOC.
-function PlatformWrap({ children }) {
+export default PlatformWrap;
+function PlatformWrap(props) {
   ///platform.StoreWrap = StoreWrap;
-  const [storeState, setStoreState] = React.useState(platform.store);
+  const [storeState, setStoreState] = React.useState(props.store);
   React.useEffect(() => {
     // Temp: Follow sTo removes fetch error mask screen due to problem at codesandbox.
     ///document.getElementById("root").nextSibling.style.display = "none";
@@ -27,20 +16,20 @@ function PlatformWrap({ children }) {
       }
     }, 500);
 
-    platform.store.setCommitHandler(store => {
+    props.store.setCommitHandler(store => {
       const newStore = { ...store };
       setStoreState(newStore);
     });
     // This will trigger rendering to show store changes after
     // ...sub components triggered store writes on their mount.
-    const newStore = { ...platform.store };
+    const newStore = { ...props.store };
     setStoreState(newStore);
   }, []);
   return (
     <StoreChangedContext.Provider value={storeState}>
       <>
         -= Platform Wrap =-
-        {children}
+        {props.children}
       </>
     </StoreChangedContext.Provider>
   );

@@ -1,6 +1,6 @@
 import React from "react";
 ///import platform from "../platform/platform";
-import { StoreChangedContext } from "../platform/Platform_Contexts";
+import { StoreChangedContext } from "./Platform_Contexts";
 
 //::DEFAULT::::::::::-::::::::::-::::::::::-::::::::::-::::::::::
 export default withStoreHOC;

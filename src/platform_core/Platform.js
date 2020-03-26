@@ -2,6 +2,7 @@ import noticeHandling from "./Platform_NoticeHanding";
 import store from "./Platform_Store";
 import { StoreChangedContext } from "./Platform_Contexts";
 import withStoreHOC from "./Platform_withStoreHOC";
+import { getHOC } from "./Platform_withPlatformHOC";
 
 let __pkg = null;
 
@@ -13,6 +14,11 @@ function Platform() {
   };
   return Publik;
 }
+
+//::EXPORTS::::::::::-::::::::::-::::::::::-::::::::::-::::::::::
+export const getStore = () => {
+  return __pkg.store;
+};
 
 //::HOISTED::::::::::-::::::::::-::::::::::-::::::::::-::::::::::
 
@@ -26,6 +32,7 @@ function initPlatform(initalStoreTree, noticeHandlers, tools) {
       StoreChangedContext,
       store,
       withStoreHOC: withStoreHOC,
+      withPlatformHOC: getHOC(store),
       notify: noticeHandling.notify,
       tools: { ...tools }
     };

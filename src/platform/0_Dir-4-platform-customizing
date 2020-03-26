@@ -1,0 +1,4 @@
+This folder holds the files for adapting and extending platform core for the needs of the apps.  
+The code in in the files follows convention to inorder to interface with platform core.
+In a more descriptive sense this folder might be call "app_platform", "my_platform", "customized_platform, etc.  
+But "platform" is faster to type in import statments and looks 'cleaner'.
