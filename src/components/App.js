@@ -1,5 +1,4 @@
 import React from "react";
-///import withPlatformHOC from "../platform/Platform_withPlatformHOC";
 import { withPlatformHOC } from "../platform";
 import Masthead from "./Masthead";
 import FelinesPage from "./FelinesPage";
