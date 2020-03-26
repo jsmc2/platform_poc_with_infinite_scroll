@@ -1,12 +1,17 @@
 import React from "react";
-import platform from "../platform";
 import FelinesList from "./FelinesList";
-import useMousePosition from "../hooks/useMousePosition";
+import { notify, withStoreHOC, tools } from "../platform";
+const { runManageScrollToBottom, useMousePosition } = tools;
 
-const runManageScrollToBottom = platform.tools.runManageScrollToBottom;
 const style_presentSelfNested = { marginLeft: "20px" };
+const propsMapping = {
+  forPgCnt: "felinesPgCnt",
+  forPgCntMax: "felinesPgCntMax"
+};
 
-const TheComp = React.memo(props => {
+//::DEFAULT::::::::::-::::::::::-::::::::::-::::::::::-::::::::::
+export default withStoreHOC(propsMapping, React.memo(TheComp));
+function TheComp(props) {
   React.useEffect(() => {
     runManageScrollToBottom(handleScrolledToBottom);
   }, []);
@@ -32,16 +37,10 @@ const TheComp = React.memo(props => {
       {loadingMsg}
     </div>
   );
-});
-
-const propsMapping = {
-  forPgCnt: "felinesPgCnt",
-  forPgCntMax: "felinesPgCntMax"
-};
-export default platform.withStoreWrap(TheComp, propsMapping);
-
+}
+//::HOISTED::::::::::-::::::::::-::::::::::-::::::::::-::::::::::
 function handleScrolledToBottom() {
-  platform.notify({
+  notify({
     subject: "FelinesPageScrolledToBottom"
   });
 }

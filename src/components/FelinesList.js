@@ -1,12 +1,17 @@
 import React from "react";
-import platform from "../platform";
+import platform, { notify } from "../platform";
 import ListHeader from "./ListHeader";
 import ListSubheader from "./ListSubheader";
 import AnimalsList from "./AnimalsList";
 
 const style_presentSelfNested = { marginLeft: "20px" };
+const propsMapping = {
+  list: "felines"
+};
 
-const TheComp = React.memo(props => {
+//::DEFAULT::::::::::-::::::::::-::::::::::-::::::::::-::::::::::
+export default platform.withStoreHOC(propsMapping, React.memo(TheComp));
+function TheComp(props) {
   // Get props from StoreWrap.
   React.useEffect(() => {
     handleCompMounted_();
@@ -19,17 +24,12 @@ const TheComp = React.memo(props => {
       <AnimalsList list={props.list} />
     </div>
   );
-});
+}
 
-const propsMapping = {
-  list: "felines"
-};
-
-export default platform.withStoreWrap(TheComp, propsMapping);
-
+//::HOISTED::::::::::-::::::::::-::::::::::-::::::::::-::::::::::
 // HOISTED HELPER FUNCTIONS:
 function handleCompMounted_() {
-  platform.notify({
+  notify({
     subject: "FelinesListMounted"
   });
 }

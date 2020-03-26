@@ -1,12 +1,12 @@
-import React from "react";
 import noticeHandling from "./Platform_NoticeHanding";
 import store from "./Platform_Store";
 import { StoreChangedContext } from "./Platform_Contexts";
+import withStoreHOC from "./Platform_withStoreHOC";
 
-import StoreWrap from "./Platform_StoreWrap";
+let __pkg = null;
 
-let __pkg = false;
-
+//::DEFAULT::::::::::-::::::::::-::::::::::-::::::::::-::::::::::
+export default Platform();
 function Platform() {
   const Publik = {
     initPlatform
@@ -14,33 +14,21 @@ function Platform() {
   return Publik;
 }
 
-export default Platform();
+//::HOISTED::::::::::-::::::::::-::::::::::-::::::::::-::::::::::
 
 // HOISTED PUBLIK FUNCTIONS (Have NO closures over module's info.)
 function initPlatform(initalStoreTree, noticeHandlers, tools) {
-  if (__pkg === false) {
+  if (!__pkg) {
     store.initStorePojo(initalStoreTree);
     noticeHandling.setStore(store);
     noticeHandling.setNoticeHandlers(noticeHandlers);
     __pkg = {
       StoreChangedContext,
       store,
-      withStoreWrap: withStoreWrap_,
+      withStoreHOC: withStoreHOC,
       notify: noticeHandling.notify,
       tools: { ...tools }
     };
   }
   return __pkg;
-}
-
-function withStoreWrap_(WrappedComp, propsMapping) {
-  return props => {
-    return (
-      <StoreWrap
-        {...props}
-        WrappedComp={WrappedComp}
-        propsMapping={propsMapping}
-      />
-    );
-  };
 }

@@ -11,6 +11,8 @@ import * as Tools from "./Platform_Tools";
 let __wasStorePojoRetrieved = false;
 let __wasStorePojoInited = false;
 
+//::DEFAULT::::::::::-::::::::::-::::::::::-::::::::::-::::::::::
+export default Store();
 function Store() {
   const info = {
     storePojo: { data: {} }, // let
@@ -39,6 +41,8 @@ function Store() {
     ...PublikFunctions
   };
   return Publik;
+
+  //::HOISTED::::::::::-::::::::::-::::::::::-::::::::::-::::::::::
 
   // HOISTED PUBLIK METHODS (Have closures over module's info.)
   function initStorePojo(initalTree) {
@@ -146,5 +150,3 @@ function Store() {
     ii.logForCommits.push(item);
   }
 }
-
-export default Store();

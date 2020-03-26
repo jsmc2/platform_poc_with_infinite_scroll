@@ -2,7 +2,22 @@ import React from "react";
 ///import platform from "../platform/platform";
 import { StoreChangedContext } from "../platform/Platform_Contexts";
 
-const TheComp = React.memo(_props => {
+//::DEFAULT::::::::::-::::::::::-::::::::::-::::::::::-::::::::::
+export default withStoreHOC;
+function withStoreHOC(propsMapping, WrappedComp) {
+  return props => {
+    return (
+      <StoreWrap
+        {...props}
+        WrappedComp={WrappedComp}
+        propsMapping={propsMapping}
+      />
+    );
+  };
+}
+
+// HOISTED WRAPPER COMPONENT FOR withStoreHOC.
+const StoreWrap = React.memo(_props => {
   const props = { ..._props };
   const store = React.useContext(StoreChangedContext);
   const WrappedComp = props.WrappedComp;
@@ -17,5 +32,3 @@ const TheComp = React.memo(_props => {
   delete props.propsMapping;
   return <WrappedComp {...resolvedPropsMapping} {...props} />;
 });
-
-export default TheComp;

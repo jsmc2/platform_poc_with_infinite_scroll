@@ -1,3 +1,5 @@
+//::DEFAULT::::::::::-::::::::::-::::::::::-::::::::::-::::::::::
+export default NoticeHandling();
 function NoticeHandling() {
   const info = {
     store: undefined,
@@ -10,6 +12,8 @@ function NoticeHandling() {
     notify
   };
   return Publik;
+
+  //::HOISTED::::::::::-::::::::::-::::::::::-::::::::::-::::::::::
 
   // HOISTED PUBLIK METHODS (Have closures over module's info.)
   function setStore(store) {
@@ -29,4 +33,3 @@ function NoticeHandling() {
     return handler;
   }
 }
-export default NoticeHandling();

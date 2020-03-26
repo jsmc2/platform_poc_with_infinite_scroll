@@ -1,5 +1,7 @@
 import { debounce } from "lodash";
 
+//::DEFAULT::::::::::-::::::::::-::::::::::-::::::::::-::::::::::
+export default runManageScrollToBottom;
 function runManageScrollToBottom(scrolledToBottomHandler) {
   window.onscroll = debounce(() => {
     if (
@@ -7,9 +9,6 @@ function runManageScrollToBottom(scrolledToBottomHandler) {
       document.documentElement.offsetHeight - 100
     ) {
       scrolledToBottomHandler();
-      // Do awesome stuff like loading more content!
     }
   }, 200);
 }
-
-export default runManageScrollToBottom;

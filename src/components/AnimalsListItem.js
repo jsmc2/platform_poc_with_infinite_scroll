@@ -2,7 +2,9 @@ import React from "react";
 
 const style_presentSelfNested = { marginLeft: "20px" };
 
-const TheComp = React.memo(props => {
+//::DEFAULT::::::::::-::::::::::-::::::::::-::::::::::-::::::::::
+export default React.memo(TheComp);
+function TheComp(props) {
   const style_li = {
     objectFit: "cover",
     width: "150px",
@@ -16,6 +18,4 @@ const TheComp = React.memo(props => {
       AnimalListItem (Memoed -|- Time: {Date.now()})
     </li>
   );
-});
-
-export default TheComp;
+}

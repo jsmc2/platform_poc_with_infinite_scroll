@@ -1,19 +1,33 @@
-import { Tools } from "../tools";
+import { tools as __tools } from "../tools";
+import { hooks } from "../hooks";
 import platform from "./Platform";
 import * as noticeHandlers from "./NoticeHandlers";
+
 let __initaizedPlatform = false;
 
-if (__initaizedPlatform === false) {
-  const initialStoreData = bgetInitialStoreData_();
-
-  __initaizedPlatform = platform.initPlatform(
-    initialStoreData,
-    noticeHandlers,
-    Tools
-  );
+//::DEFAULT::::::::::-::::::::::-::::::::::-::::::::::-::::::::::
+export default inializePlatform();
+function inializePlatform() {
+  console.log(">>> START inializePlatform.  (KEEP THIS CONSOLE.LOG)");
+  if (__initaizedPlatform === false) {
+    const initialStoreData = bgetInitialStoreData_();
+    const tools = { ...__tools, ...hooks };
+    __initaizedPlatform = platform.initPlatform(
+      initialStoreData,
+      noticeHandlers,
+      tools
+    );
+  }
+  return __initaizedPlatform;
 }
 
-export default __initaizedPlatform;
+//::EXPORTS::::::::::-::::::::::-::::::::::-::::::::::-::::::::::
+// Individully export functionality for view.
+export const notify = __initaizedPlatform.notify;
+export const tools = __initaizedPlatform.tools;
+export const withStoreHOC = __initaizedPlatform.withStoreHOC;
+
+//::HOISTED::::::::::-::::::::::-::::::::::-::::::::::-::::::::::
 
 // HOISTED HELPER FUNCTIONS (Have NO closures over module's info.)
 function bgetInitialStoreData_() {
@@ -29,8 +43,7 @@ function bgetInitialStoreData_() {
         sue: {
           id: "sue",
           name: "Sue",
-          age: 23,
-          spouse: "bob"
+          age: 23
         }
       }
     }

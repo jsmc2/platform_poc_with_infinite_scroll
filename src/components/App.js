@@ -1,11 +1,13 @@
 import React from "react";
-import withPlatformWrap from "../platform/Platform_withPlatformWrap";
+import withPlatformHOC from "../platform/Platform_withPlatformHOC";
 import Masthead from "./Masthead";
 import FelinesPage from "./FelinesPage";
 
 const style_presentSelfNested = { marginLeft: "20px" };
 
-function TheComp() {
+//::DEFAULT::::::::::-::::::::::-::::::::::-::::::::::-::::::::::
+export default withPlatformHOC(TheComp);
+function TheComp(props) {
   return (
     <div style={{ ...style_presentSelfNested }}>
       -= App (Time: {Date.now()}) =-
@@ -14,5 +16,3 @@ function TheComp() {
     </div>
   );
 }
-
-export default withPlatformWrap(TheComp);

@@ -3,7 +3,9 @@ import AnimalsListItem from "./AnimalsListItem";
 
 const style_presentSelfNested = { marginLeft: "20px" };
 
-const TheComp = React.memo(props => {
+//::DEFAULT::::::::::-::::::::::-::::::::::-::::::::::-::::::::::
+export default React.memo(TheComp);
+function TheComp(props) {
   const listItems = !props.list
     ? []
     : props.list.map(item => (
@@ -19,6 +21,4 @@ const TheComp = React.memo(props => {
       <ul style={{ ...style_ul }}>{listItems}</ul>
     </div>
   );
-});
-
-export default TheComp;
+}
